@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public class RoleRepository extends HibernateDaoSupport {
+public class RoleRepository  {
     @Autowired
     private SessionFactory sessionFactory;
 
