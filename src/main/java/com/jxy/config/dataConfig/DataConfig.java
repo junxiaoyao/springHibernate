@@ -1,12 +1,15 @@
 package com.jxy.config.dataConfig;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+
 import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.Properties;
@@ -101,18 +104,25 @@ public class DataConfig {
     public JdbcTemplate jdbcTemplate(DataSource dataSource) {
         return new JdbcTemplate(dataSource);
     }
+
     //hibernate配置
     @Bean
     public LocalSessionFactoryBean sessionFactoryBean(DataSource dataSource) {
         LocalSessionFactoryBean sfb = new LocalSessionFactoryBean();
         sfb.setDataSource(dataSource);
         sfb.setPackagesToScan(new String[]{"com.jxy.hEntity"});
-        Properties properties=new Properties();
-        properties.setProperty("dialect","org.hibernate.dialect.MySQL5Dialect");
-        properties.setProperty("autoCommit ","true");
-      //properties.setProperty("current_session_context_class","thread");
-        properties.setProperty("current_session_context_class","jta");
+        Properties properties = new Properties();
+        properties.setProperty("dialect", "org.hibernate.dialect.MySQL5Dialect");
+        properties.setProperty("autoCommit ", "true");
+        //properties.setProperty("current_session_context_class","thread");
+        properties.setProperty("current_session_context_class", "jta");
         sfb.setHibernateProperties(properties);
         return sfb;
+    }
+
+    @Bean
+    public HibernateTransactionManager getHibernateTransactionManager(SessionFactory sessionFactory) {
+        HibernateTransactionManager hibernateTransactionManage = new HibernateTransactionManager(sessionFactory);
+        return hibernateTransactionManage;
     }
 }

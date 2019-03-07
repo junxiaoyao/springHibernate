@@ -26,7 +26,7 @@ public class HomeController {
    private RoleServiceRe roleServiceRe;
     @RequestMapping(method = RequestMethod.GET)
     public String home(HttpServletRequest request, Model model) {
-       roleServiceRe.testSave();
+       roleServiceRe.getOne();
         Map<String,Object> user=new HashMap<>();
         user.put("userName","jxy");
         model.addAttribute("user",user);

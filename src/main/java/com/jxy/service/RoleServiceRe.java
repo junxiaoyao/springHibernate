@@ -21,4 +21,8 @@ public class RoleServiceRe {
         roleEntity.setUserName("rss");
         roleRepository.save(roleEntity);
     }
+    public Role getOne(){
+       Role role= roleRepository.getOne();
+       return role;
+    }
 }
