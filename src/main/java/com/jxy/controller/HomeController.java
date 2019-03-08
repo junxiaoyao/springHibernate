@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,10 +27,8 @@ import java.util.Map;
 public class HomeController {
     @Autowired
     private RoleServiceRe roleServiceRe;
-
     @RequestMapping(method = RequestMethod.GET)
     public String home(HttpServletRequest request, Model model) {
-        Role role = roleServiceRe.getOne();
         Map<String, Object> user = new HashMap<>();
         user.put("userName", "jxy");
         model.addAttribute("user", user);

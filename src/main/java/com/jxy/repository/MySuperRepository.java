@@ -3,6 +3,7 @@ package com.jxy.repository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
@@ -17,6 +18,7 @@ import java.util.List;
  * @Description:
  */
 @Transactional
+@Repository
 public class MySuperRepository<T, P extends Serializable> {
     private Class<T> entityClass;
     @Autowired
@@ -30,7 +32,7 @@ public class MySuperRepository<T, P extends Serializable> {
         getSession().saveOrUpdate(entity);
     }
 
-    public T getById(final P id) {
+    public T getById(final Long id) {
         return (T) getSession().get(entityClass, id);
     }
 

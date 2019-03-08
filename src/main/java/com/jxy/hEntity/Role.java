@@ -3,34 +3,26 @@ package com.jxy.hEntity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
-@Table(name="roles")
-public class Role {
-	private static final long serialVersionUID = 1L;
-	@Id
-	private long roleId;//ID
+@Table(name="hrole")
+public class Role extends AbstractEntity{
 	private String roleName;//角色名字
-    private String createTime;//创建时间
+    private Date createTime;//创建时间
     private String remark;//备注
     private long userId;//创建人ID
     private String userName;//创建人
-	public long getRoleId() {
-		return roleId;
-	}
-	public void setRoleId(long roleId) {
-		this.roleId = roleId;
-	}
 	public String getRoleName() {
 		return roleName;
 	}
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-	public String getCreateTime() {
+	public Date getCreateTime() {
 		return createTime;
 	}
-	public void setCreateTime(String createTime) {
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 	public String getRemark() {

@@ -114,6 +114,8 @@ public class DataConfig {
         Properties properties = new Properties();
         properties.setProperty("dialect", "org.hibernate.dialect.MySQL5Dialect");
         properties.setProperty("autoCommit ", "true");
+        properties.setProperty("hibernate.show_sql", "true");
+        properties.setProperty("format_sql", "true");
         //properties.setProperty("current_session_context_class","thread");
         // properties.setProperty("current_session_context_class","org.springframework.orm.hibernate4.SpringSessionContext");
         // properties.setProperty("current_session_context_class", "jta");
