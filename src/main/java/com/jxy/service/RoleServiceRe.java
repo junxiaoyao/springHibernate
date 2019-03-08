@@ -22,7 +22,7 @@ public class RoleServiceRe {
         roleRepository.save(roleEntity);
     }
     public Role getOne(){
-       Role role= roleRepository.getOne();
+       Role role= roleRepository.getById(1l);
        return role;
     }
 }

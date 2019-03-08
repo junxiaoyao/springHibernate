@@ -1,5 +1,6 @@
 package com.jxy.controller;
 
+import com.jxy.hEntity.Role;
 import com.jxy.service.RoleServiceRe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -23,13 +24,14 @@ import java.util.Map;
 @RequestMapping("/")
 public class HomeController {
     @Autowired
-   private RoleServiceRe roleServiceRe;
+    private RoleServiceRe roleServiceRe;
+
     @RequestMapping(method = RequestMethod.GET)
     public String home(HttpServletRequest request, Model model) {
-       roleServiceRe.getOne();
-        Map<String,Object> user=new HashMap<>();
-        user.put("userName","jxy");
-        model.addAttribute("user",user);
+        Role role = roleServiceRe.getOne();
+        Map<String, Object> user = new HashMap<>();
+        user.put("userName", "jxy");
+        model.addAttribute("user", user);
         return "homePage";
     }
 

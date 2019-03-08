@@ -110,12 +110,13 @@ public class DataConfig {
     public LocalSessionFactoryBean sessionFactoryBean(DataSource dataSource) {
         LocalSessionFactoryBean sfb = new LocalSessionFactoryBean();
         sfb.setDataSource(dataSource);
-        sfb.setPackagesToScan(new String[]{"com.jxy.hEntity"});
+        sfb.setPackagesToScan(new String[]{"com.jxy.hEntity", "com.gwc.learn.spring.entity"});
         Properties properties = new Properties();
         properties.setProperty("dialect", "org.hibernate.dialect.MySQL5Dialect");
         properties.setProperty("autoCommit ", "true");
         //properties.setProperty("current_session_context_class","thread");
-        properties.setProperty("current_session_context_class", "jta");
+        // properties.setProperty("current_session_context_class","org.springframework.orm.hibernate4.SpringSessionContext");
+        // properties.setProperty("current_session_context_class", "jta");
         sfb.setHibernateProperties(properties);
         return sfb;
     }
