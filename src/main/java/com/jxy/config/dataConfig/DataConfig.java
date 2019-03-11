@@ -110,7 +110,7 @@ public class DataConfig {
     public LocalSessionFactoryBean sessionFactoryBean(DataSource dataSource) {
         LocalSessionFactoryBean sfb = new LocalSessionFactoryBean();
         sfb.setDataSource(dataSource);
-        sfb.setPackagesToScan(new String[]{"com.jxy.hEntity", "com.gwc.learn.spring.entity"});
+        sfb.setPackagesToScan(new String[]{"com.jxy.entity", "com.gwc.learn.spring.entity"});
         Properties properties = new Properties();
         properties.setProperty("dialect", "org.hibernate.dialect.MySQL5Dialect");
         properties.setProperty("autoCommit ", "true");
