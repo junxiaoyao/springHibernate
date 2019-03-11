@@ -34,18 +34,12 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http .formLogin()
-                //　//这里程序登陆页面，允许所有人进行登陆
-                .loginPage("/login").permitAll()
+        http.formLogin()
+                .loginPage("/login").permitAll()  //登陆页面
                 .loginProcessingUrl("/login")
-                //失败重新登录
-                .failureForwardUrl("/login")
-                //成功进入主界面
-                // .successForwardUrl("/")
-                .and().authorizeRequests().antMatchers("/").hasRole("ADMIN");
-
-        /*http.
-                formLogin().loginPage("/login").permitAll()
-                .and().authorizeRequests().anyRequest();*/
+                .failureForwardUrl("/login") //失败重新登录
+                .and()
+                .authorizeRequests()
+                .antMatchers("/").hasRole("ADMIN");
     }
 }
