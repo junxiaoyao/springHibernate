@@ -40,11 +40,11 @@ public class MySuperRepository<T, P extends Serializable> {
         return getSession().createQuery(queryString).list();
     }
 
-    private Session getSession() {
+    protected Session getSession() {
         return sessionFactory.getCurrentSession();
     }
 
-    private Class<T> getTClass() {
+    protected Class<T> getTClass() {
         //获取直接超类的 Type 实例
         Type superClassType = getClass().getGenericSuperclass();
         try {
